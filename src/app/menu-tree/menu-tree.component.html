@@ -1,0 +1,96 @@
+<!--table-->
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>refGroup</th>
+            <th>Name</th>
+            <th>objectName</th>
+            <th> refMenuId</th>
+
+        </tr>
+    </thead>
+    <tbody *ngIf="data1">
+        <tr *ngFor="let node of data1" (click)="openPopup(node)">
+            <td>{{ node.id}}</td>
+            <td>{{ node.refGroup}}</td>
+            <td>{{ node.name}}</td>
+            <td>{{ node.objectName}}</td>
+            <td>{{ node. refMenuId}}</td>
+
+        </tr>
+    </tbody>
+</table>
+
+
+
+<div class="popup" *ngIf="selectedNode">
+    <div class="popup-content">
+        <h2>Child Elements</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>name</th>
+                    <th>refMenuId</th>
+                    <th>objectName</th>
+                    <th>orderNum</th>
+                    <th>orderNum</th>
+                    <th>menuPath</th>
+                    <th>remarks</th>
+                    <th>isActive</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let childNode of data1">
+                    <tr *ngIf="childNode.id === selectedNode.id">
+                        <td>{{ childNode.id }}</td>
+                        <td>{{ childNode.name}}</td>
+                        <td>{{ childNode.refMenuId}}</td>
+                        <td>{{ childNode.objectName}}</td>
+                        <td>{{ childNode.orderNum}}</td>
+                        <td>{{ childNode.type}}</td>
+                        <td>{{ childNode.menuPath}}</td>
+                        <td>{{ childNode.remarks}}</td>
+                        <td>{{ childNode.isActive}}</td>
+
+
+
+
+                    </tr>
+                </ng-container>
+            </tbody>
+            <thead>
+                <tr>
+                    <th>entDate</th>
+                    <th>entUser</th>
+                    <th>entTerm</th>
+                    <th>updDate</th>
+                    <th>updUser</th>
+                    <th>updTerm</th>
+                    <th>menuIcon</th>
+                    <th>refGroupNavigation</th>
+                    <th>tblRoleWiseMenu</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let childNode of data1">
+                    <tr *ngIf="childNode.id === selectedNode.id">
+                        <td>{{ childNode.entDate}}</td>
+                        <td>{{ childNode.entUser}}</td>
+                        <td>{{ childNode.entTerm}}</td>
+                        <td>{{ childNode.updDate}}</td>
+                        <td>{{ childNode.updUser}}</td>
+                        <td>{{ childNode.updTerm}}</td>
+                        <td>{{ childNode.menuIcon}}</td>
+                        <td>{{ childNode.refGroupNavigation}}</td>
+                        <td>{{ childNode.tblRoleWiseMenu}}</td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+        <button class="closebtn" (click)="closePopup()">Close</button>
+    </div>
+</div>
